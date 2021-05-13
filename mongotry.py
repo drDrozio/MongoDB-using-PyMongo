@@ -37,6 +37,10 @@ for x in xs:
 # collection.update_one({"_id":13},{"$set":{"comments":"Good boy"}})
 
 
-#Other Queries
+#Other Queries:-
+#Count of Documents
 post_count=collection.count_documents({})
 print("Number of Documents : ",post_count)
+#Count of people with score more than 12
+q1=collection.find({"score":{"$gt":12}}).count()
+print("Scorers greater than 12 : ",q1)
