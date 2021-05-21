@@ -1,7 +1,15 @@
 import pymongo
 from pymongo import MongoClient
+import urllib,csv
 
-cluster=MongoClient('mongodb+srv://Drozio:RandiRaina69@cluster0.qjtkv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+with open('creds.txt') as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter=',')
+    for row in csv_reader:
+    	clid=row[0]
+    	pwd=row[1]
+csv_file.close()
+
+cluster=MongoClient("mongodb+srv://"+clid+":"+pwd+"@cluster0.qjtkv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 db=cluster['test']
 collection=db['test']
 
